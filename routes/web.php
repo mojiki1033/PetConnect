@@ -13,9 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PetController@index');
+
+Route::get('/pets/create', 'PetController@create');
+
+Route::get('/pets/{pet}', 'PetController@show');
+
+Route::post('/pets', 'PetController@store');
+
+Route::get('/pets/{pet}/edit', 'PetController@edit');
+
+Route::put('/pets/{pet}', 'PetController@update');
+
+Route::delete('/pets/{pet}', 'PetController@delete');
 
 Auth::routes();
 
