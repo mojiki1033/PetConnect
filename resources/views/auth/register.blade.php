@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<head>
+    <title>アカウント作成 - {{ config('app.name', 'Laravel') }}</title>
+</head>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
