@@ -15,7 +15,7 @@ class CreatePetsTable extends Migration
     {
         Schema::create('pets', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('status_id')->constrained();
+            $table->foreignId('status_id')->default(1)->constrained();
             $table->string('title', 50);
             $table->foreignId('sex_id')->constrained();
             $table->integer('age');

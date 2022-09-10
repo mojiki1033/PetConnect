@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,19 +14,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'PetController@index');
+Route::controller(PetController::class)->group(function () {
+    
+    Route::get('/pets', 'index');
 
-Route::get('/pets/create', 'PetController@create');
+    Route::get('/pets/create', 'create');
 
-Route::get('/pets/{pet}', 'PetController@show');
+    Route::post('/pets', 'store');
 
-Route::post('/pets', 'PetController@store');
+    Route::get('/pets/{pet}', 'show');
 
-Route::get('/pets/{pet}/edit', 'PetController@edit');
+    Route::get('/pets/{pet}/edit', 'edit');
 
-Route::put('/pets/{pet}', 'PetController@update');
+    Route::put('/pets/{pet}', 'update');
 
-Route::delete('/pets/{pet}', 'PetController@delete');
+    Route::delete('/pets/{pet}', 'delete');
+});
 
 Auth::routes();
 
