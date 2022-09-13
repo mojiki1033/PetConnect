@@ -73,8 +73,8 @@
                 
                 <div class="mb-4">
                     <h5>詳細情報（2000字以内）</h5>
-                    <textarea class="form-control" rows="5" name="pet[body]" placeholder="疾患、アレルギー、避妊・去勢の有無、性格、えさの好みなど">{{ old('pet.body') }}</textarea>
-                    <p style="color:red">{{ $errors->first('pet.body') }}</p>
+                    <textarea class="form-control" rows="5" name="pet[detail]" placeholder="疾患、アレルギー、避妊・去勢の有無、性格、えさの好みなど">{{ old('pet.detail') }}</textarea>
+                    <p style="color:red">{{ $errors->first('pet.detail') }}</p>
                 </div>
                 
                 <div class="d-grid mb-2 col-6 mx-auto">

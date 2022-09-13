@@ -21,7 +21,7 @@ class Pet extends Model
         'breed',
         'prefecture_id',
         'delivery_area',
-        'body',
+        'detail',
         'user_id',
     ];
     

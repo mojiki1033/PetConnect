@@ -31,7 +31,7 @@ class PetRequest extends FormRequest
             'pet.breed' => 'required|max:50',
             'pet.prefecture_id' => 'required',
             'pet.delivery_area' => 'required|max:50',
-            'pet.body' => 'string|max:2000',
+            'pet.detail' => 'string|max:2000',
         ];
     }
 }

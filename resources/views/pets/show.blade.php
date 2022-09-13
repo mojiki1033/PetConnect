@@ -75,7 +75,7 @@
                     詳細情報
                 </dt>
                 <dd class="col-12 col-sm-12 col-md-9">
-                    {!! nl2br(e($pet->body)) !!}
+                    {!! nl2br(e($pet->detail)) !!}
                 </dd>
             </dl>
         </div>
