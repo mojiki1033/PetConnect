@@ -21,7 +21,42 @@ class Pet extends Model
         'breed',
         'prefecture_id',
         'delivery_area',
-        'body',
+        'detail',
         'user_id',
     ];
+    
+    //リレーション（⇔statusesテーブル）
+    public function status()
+    {
+        return $this->belongsTo('App\Models\Status');
+    }
+    
+    //リレーション（⇔sexesテーブル）
+    public function sex()
+    {
+        return $this->belongsTo('App\Models\Sex');
+    }
+    
+    //リレーション（⇔speciesテーブル）
+    public function species()
+    {
+        return $this->belongsTo('App\Models\Species');
+    }
+    
+    //リレーション（⇔prefecturesテーブル）
+    public function prefecture()
+    {
+        return $this->belongsTo('App\Models\Prefecture');
+    }
+    
+    //リレーション（⇔usersテーブル）
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+    
+    public function getPaginateByLimit(int $limit_count = 10)
+    {
+        return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
+    }
 }

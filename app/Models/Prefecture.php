@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Prefecture extends Model
 {
     use HasFactory;
+    
+    //リレーション（⇔petsテーブル）
+    public function pets()   
+    {
+        return $this->hasMany('App\Models\Pet');
+    }
 }
