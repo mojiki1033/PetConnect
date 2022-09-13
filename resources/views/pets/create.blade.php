@@ -6,9 +6,7 @@
 </head>
 <body>
     <div class="container">
-        <a href="/pets">
-            <button type="button" class="btn btn-light" onClick="history.back()">< 戻る</button>
-        </a>
+        <button type="button" class="btn btn-outline-secondary" onClick="history.back()">< 戻る</button>
         <div class="col-lg-10 col-xl-9 col-xxl-8 mx-auto">
             <h3 class="text-center mb-5">ペットの投稿</h3>
             <form action="/pets" method="POST">
@@ -73,7 +71,7 @@
                 
                 <div class="mb-4">
                     <h5>詳細情報（2000字以内）</h5>
-                    <textarea class="form-control" rows="5" name="pet[detail]" placeholder="疾患、アレルギー、避妊・去勢の有無、性格、えさの好みなど">{{ old('pet.detail') }}</textarea>
+                    <textarea class="form-control" rows="10" name="pet[detail]" placeholder="疾患、アレルギー、避妊・去勢の有無、性格、えさの好みなど">{{ old('pet.detail') }}</textarea>
                     <p style="color:red">{{ $errors->first('pet.detail') }}</p>
                 </div>
                 

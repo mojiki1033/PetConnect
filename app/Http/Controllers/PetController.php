@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pet;
+use App\Models\Status;
 use App\Models\Species;
 use App\Models\Sex;
 use App\Models\Prefecture;
@@ -36,5 +37,28 @@ class PetController extends Controller
         $input['user_id'] = Auth::id();    //現在認証しているユーザーのIDをuser_idとして追加
         $pet->fill($input)->save();    //petsテーブルに保存
         return redirect('/pets/' . $pet->id);
+    }
+    
+    public function edit(Pet $pet, Status $status, Species $species, Sex $sex, Prefecture $prefecture)
+    {
+        return view('pets/edit')
+        ->with(['pet' => $pet])
+        ->with(['statuses' => $status->get()])
+        ->with(['species' => $species->get()])
+        ->with(['sexes' => $sex->get()])
+        ->with(['prefectures' => $prefecture->get()]);
+    }
+    
+    public function update(PetRequest $request, Pet $pet)
+    {
+        $input = $request['pet'];
+        $pet->fill($input)->save();
+        return redirect('/pets/' . $pet->id);
+    }
+    
+    public function delete(Pet $pet)
+    {
+        $pet->delete();
+        return redirect('/pets');
     }
 }

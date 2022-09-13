@@ -6,14 +6,10 @@
 </head>
 <body>
     <div class="container">
-        <a href="/pets">
-            <button type="button" class="btn btn-light" onClick="history.back()">< 戻る</button>
-        </a>
+        <button type="button" class="btn btn-outline-secondary" onClick="history.back()">< 戻る</button>
         <div class="col-lg-10 col-xl-9 col-xxl-8 mx-auto">
             <dl class="row">
-                <h2>
-                    {{ $pet->title }}
-                </h2>
+                <h2>{{ $pet->title }}</h2>
                 <hr>
                 <dt class="col-12 col-sm-12 col-md-3">
                     募集状況
@@ -78,6 +74,16 @@
                     {!! nl2br(e($pet->detail)) !!}
                 </dd>
             </dl>
+            
+            @if ($pet->status_id == 3)
+                <div class="d-grid mb-2 col-6 mx-auto">
+                    <button type="button" class="btn btn-secondary" disabled>マッチング成立済</button>
+                </div>
+                @elseif ($pet->user->id == Auth::id())
+                    <a href="/pets/{{ $pet->id }}/edit" class="d-grid mb-2 col-6 mx-auto">
+                        <button type="button" class="btn btn-success">投稿の編集</button>
+                    </a>
+                @endif
         </div>
     </div>
 </body>
