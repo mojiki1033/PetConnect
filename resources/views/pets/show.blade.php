@@ -2,7 +2,7 @@
 
 @section('content')
 <head>
-    <title>{{ $pet->title }}</title>
+    <title>{{ $pet->title }} - PetConnect</title>
 </head>
 <body>
     <div class="container">
@@ -11,7 +11,7 @@
         </a>
         <div class="col-lg-10 col-xl-9 col-xxl-8 mx-auto">
             <dl class="row">
-                <h2 class="col-12">
+                <h2>
                     {{ $pet->title }}
                 </h2>
                 <hr>
