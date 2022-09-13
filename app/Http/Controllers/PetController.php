@@ -12,9 +12,14 @@ use Illuminate\Support\Facades\Auth;
 
 class PetController extends Controller
 {
-    public function index()
+    public function index(Pet $pet)
     {
-        return view('pets/index');
+        return view('pets/index')->with(['pets'=> $pet->getPaginateByLimit()]);
+    }
+    
+    public function show(Pet $pet)
+    {
+        return view('pets/show')->with(['pet' => $pet]);
     }
     
     public function create(Species $species, Sex $sex, Prefecture $prefecture)
@@ -30,6 +35,6 @@ class PetController extends Controller
         $input = $request['pet'];    //リクエストパラメータを配列で取得
         $input['user_id'] = Auth::id();    //現在認証しているユーザーのIDをuser_idとして追加
         $pet->fill($input)->save();    //petsテーブルに保存
-        return redirect('/pets');
+        return redirect('/pets/' . $pet->id);
     }
 }
