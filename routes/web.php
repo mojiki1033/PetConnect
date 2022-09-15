@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PetController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,10 @@ Route::controller(PetController::class)->group(function () {
     Route::put('/pets/{pet}', 'update');
 
     Route::delete('/pets/{pet}', 'delete');
+});
+
+Route::controller(CommentController::class)->group(function () {
+    Route::post('/pets/{pet}/comments', 'store');
 });
 
 Auth::routes();

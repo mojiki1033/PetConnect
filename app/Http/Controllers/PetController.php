@@ -8,6 +8,7 @@ use App\Models\Status;
 use App\Models\Species;
 use App\Models\Sex;
 use App\Models\Prefecture;
+use App\Models\Comment;
 use App\Http\Requests\PetRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,9 +19,12 @@ class PetController extends Controller
         return view('pets/index')->with(['pets'=> $pet->getPaginateByLimit()]);
     }
     
-    public function show(Pet $pet)
+    public function show(Pet $pet, Comment $comment)
     {
-        return view('pets/show')->with(['pet' => $pet]);
+        return view('pets/show')
+        ->with(['pet' => $pet])
+        ->with(['comments' => $comment->getByPet($pet)])
+        ;
     }
     
     public function create(Species $species, Sex $sex, Prefecture $prefecture)
@@ -33,7 +37,7 @@ class PetController extends Controller
     
     public function store(PetRequest $request, Pet $pet)
     {
-        $input = $request['pet'];    //リクエストパラメータを配列で取得
+        $input = $request['pet'];    //リクエストパラメータを取得
         $input['user_id'] = Auth::id();    //現在認証しているユーザーのIDをuser_idとして追加
         $pet->fill($input)->save();    //petsテーブルに保存
         return redirect('/pets/' . $pet->id);

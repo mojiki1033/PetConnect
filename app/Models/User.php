@@ -46,6 +46,12 @@ class User extends Authenticatable
     //リレーション（⇔petsテーブル）
     public function pets()   
     {
-        return $this->hasMany('App\Models\Pet');
+        return $this->hasMany(Pet::class);
+    }
+    
+    //リレーション（⇔commentsテーブル）
+    public function comments()   
+    {
+        return $this->hasMany(Comment::class);
     }
 }
