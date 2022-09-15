@@ -6,7 +6,14 @@
 </head>
 <body>
     <div class="container">
-        <button type="button" class="btn btn-outline-secondary" onClick="history.back()">< 戻る</button>
+        <nav style="--bs-breadcrumb-divider: '>';">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">ホーム</a></li>
+                <li class="breadcrumb-item"><a href="/pets">ペット一覧</a></li>
+                <li class="breadcrumb-item"><a href="/pets/{{ $pet->id }}">{{ $pet->title }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">投稿の編集</li>
+            </ol>
+        </nav>
         <div class="col-lg-10 col-xl-9 col-xxl-8 mx-auto">
             <h3 class="text-center mb-5">投稿の編集</h3>
             <form action="/pets/{{ $pet->id }}" method="POST">
@@ -91,7 +98,7 @@
                 @method('DELETE')
                 <input type="submit" style="display:none">
                 
-                <div class="d-grid mb-2 col-6 mx-auto">
+                <div class="d-grid col-6 mx-auto">
                     <button type="button" class="btn btn-danger" onclick="return deletePost(this);">投稿の削除</button>
                 </div>
             </form>

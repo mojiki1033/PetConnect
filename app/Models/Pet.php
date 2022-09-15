@@ -28,35 +28,41 @@ class Pet extends Model
     //リレーション（⇔statusesテーブル）
     public function status()
     {
-        return $this->belongsTo('App\Models\Status');
+        return $this->belongsTo(Status::class);
     }
     
     //リレーション（⇔sexesテーブル）
     public function sex()
     {
-        return $this->belongsTo('App\Models\Sex');
+        return $this->belongsTo(Sex::class);
     }
     
     //リレーション（⇔speciesテーブル）
     public function species()
     {
-        return $this->belongsTo('App\Models\Species');
+        return $this->belongsTo(Species::class);
     }
     
     //リレーション（⇔prefecturesテーブル）
     public function prefecture()
     {
-        return $this->belongsTo('App\Models\Prefecture');
+        return $this->belongsTo(Prefecture::class);
     }
     
     //リレーション（⇔usersテーブル）
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
+    }
+    
+    //リレーション（⇔commentsテーブル）
+    public function comments()   
+    {
+        return $this->hasMany(Comment::class);
     }
     
     public function getPaginateByLimit(int $limit_count = 10)
     {
-        return $this->orderBy('updated_at', 'DESC')->paginate($limit_count);
+        return $this->orderBy('updated_at', 'desc')->paginate($limit_count);
     }
 }

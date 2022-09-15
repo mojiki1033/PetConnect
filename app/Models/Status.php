@@ -12,6 +12,6 @@ class Status extends Model
     //リレーション（⇔petsテーブル）
     public function pets()   
     {
-        return $this->hasMany('App\Models\Pet');
+        return $this->hasMany(Pet::class);
     }
 }
