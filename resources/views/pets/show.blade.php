@@ -63,10 +63,7 @@
                 <h3>コメント</h3>
                 <hr>
                 @foreach ($comments as $comment)
-                    <div>
-                        <span class="h5">{{ $comment->user->name }}</span>
-                        <small class="text-muted">（{{ $comment->created_at }}）</small>
-                    </div>
+                    <h5>{{ $comment->user->name }}：<small class="h6 text-muted">{{ $comment->created_at }}</small></h5>
                     <p>{!! nl2br(e($comment->content)) !!}</p>
                     <hr>
                 @endforeach

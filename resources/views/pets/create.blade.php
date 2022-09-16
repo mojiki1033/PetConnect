@@ -26,12 +26,13 @@
             
                 <div class="mb-4">
                     <h5>ペットの種類 <span style="color: red;">*</span></h5>
-                    <select　class="form-select" name="pet[species_id]">
-                        <option selected>-----</option>
-                        @foreach($species as $species)
-                            <option value="{{ $species->id }}">{{ $species->name }}</option>
+                    <select class="form-select" name="pet[species_id]">
+                        <option value="">-----</option>
+                        @foreach ($species as $species)
+                            <option value="{{ $species->id }}" {{ old('pet.species_id') == $species->id ? 'selected' : ''}}>{{ $species->name }}</option>
                         @endforeach
                     </select>
+                    <p style="color:red">{{ $errors->first('pet.species_id') }}</p>
                 </div>
             
                 <div class="mb-4">
@@ -52,21 +53,23 @@
                 <div class="mb-4">
                     <h5>ペットの性別 <span style="color: red;">*</span></h5>
                     <select class="form-select" name="pet[sex_id]">
-                        <option selected>-----</option>
-                        @foreach($sexes as $sex)
-                            <option value="{{ $sex->id }}">{{ $sex->name }}</option>
+                        <option value="">-----</option>
+                        @foreach ($sexes as $sex)
+                            <option value="{{ $sex->id }}" {{ old('pet.sex_id') == $sex->id ? 'selected' : ''}}>{{ $sex->name }}</option>
                         @endforeach
                     </select>
+                    <p style="color:red">{{ $errors->first('pet.sex_id') }}</p>
                 </div>
                 
                 <div class="mb-4">
                     <h5>都道府県 <span style="color: red;">*</span></h5>
                     <select class="form-select" name="pet[prefecture_id]">
-                        <option selected>-----</option>
-                        @foreach($prefectures as $prefecture)
-                            <option value="{{ $prefecture->id }}">{{ $prefecture->name }}</option>
+                        <option value="">-----</option>
+                        @foreach ($prefectures as $prefecture)
+                            <option value="{{ $prefecture->id }}" {{ old('pet.prefecture_id') == $prefecture->id ? 'selected' : ''}}>{{ $prefecture->name }}</option>
                         @endforeach
                     </select>
+                    <p style="color:red">{{ $errors->first('pet.prefecture_id') }}</p>
                 </div>
                 
                 <div class="mb-4">
