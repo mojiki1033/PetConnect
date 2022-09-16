@@ -25,9 +25,9 @@
                         @else
                             <span class="badge text-bg-info">{{ $pet->status->name }}</span>
                 @endif
-                <h3>
+                <h4>
                     <a href="/pets/{{ $pet->id }}">{{ $pet->title }}</a>
-                </h3>
+                </h4>
                 <p>
                     {{ $pet->species->name }} / {{ $pet->breed }} / {{ $pet->age }}歳 / {{ $pet->sex->name }}<br>
                     都道府県：{{ $pet->prefecture->name }}<br>

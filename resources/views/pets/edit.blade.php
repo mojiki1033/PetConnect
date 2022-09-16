@@ -16,12 +16,13 @@
         </nav>
         <div class="col-lg-10 col-xl-9 col-xxl-8 mx-auto">
             <h3 class="text-center mb-5">投稿の編集</h3>
+            <p><span style="color: red;">*</span> が付いている欄は必須項目です</p>
             <form action="/pets/{{ $pet->id }}" method="POST">
                 @csrf
                 @method('put')
                 
                 <div class="mb-4">
-                    <h5>募集状況</h5>
+                    <h5>募集状況 <span style="color: red;">*</span></h5>
                     <select class="form-select" name="pet[status_id]">
                         <option value="{{ $statuses[0]->id }}" {{ old('pet.status_id', $pet->status_id) == $statuses[0]->id ? 'selected' : '' }}>{{ $statuses[0]->name }}</option>
                         <option value="{{ $statuses[1]->id }}" {{ old('pet.status_id', $pet->status_id) == $statuses[1]->id ? 'selected' : '' }}>{{ $statuses[1]->name }}</option>
@@ -29,13 +30,13 @@
                 </div>
                 
                 <div class="mb-4">
-                    <h5>タイトル<small>（50字以内）</small></h5>
+                    <h5>タイトル <span style="color: red;">*</span><small>（50字以内）</small></h5>
                     <input type="text" class="form-control" name="pet[title]" value="{{ old('pet.title', $pet->title) }}"/>
                     <p style="color:red">{{ $errors->first('pet.title') }}</p>
                 </div>
                 
                 <div class="mb-4">
-                    <h5>ペットの種類</h5>
+                    <h5>ペットの種類 <span style="color: red;">*</span></h5>
                     <select class="form-select" name="pet[species_id]">
                         @foreach ($species as $species)
                             <option value="{{ $species->id }}" {{ old('pet.species_id', $pet->species_id) == $species->id ? 'selected' : '' }}>{{ $species->name }}</option>
@@ -44,13 +45,13 @@
                 </div>
                     
                 <div class="mb-4">
-                    <h5>品種名<small>（50字以内）</small></h5>
+                    <h5>品種名 <span style="color: red;">*</span><small>（50字以内）</small></h5>
                     <input type="text" class="form-control" name="pet[breed]" value="{{ old('pet.breed', $pet->breed) }}"/>
                     <p style="color:red">{{ $errors->first('pet.breed') }}</p>
                 </div>
                     
                 <div class="mb-4">
-                    <h5>ペットの年齢</h5>
+                    <h5>ペットの年齢 <span style="color: red;">*</span></h5>
                     <div class="input-group">
                         <input type="text" class="form-control" name="pet[age]" placeholder="半角数字のみ（例：8）" value="{{ old('pet.age', $pet->age) }}"/>
                         <span class="input-group-text">歳</span>
@@ -59,7 +60,7 @@
                 </div>
                         
                 <div class="mb-4">
-                    <h5>ペットの性別</h5>
+                    <h5>ペットの性別 <span style="color: red;">*</span></h5>
                     <select class="form-select" name="pet[sex_id]">
                         @foreach ($sexes as $sex)
                             <option value="{{ $sex->id }}" {{ old('pet.sex_id', $pet->sex_id) == $sex->id ? 'selected' : '' }}>{{ $sex->name }}</option>
@@ -68,7 +69,7 @@
                 </div>
                         
                 <div class="mb-4">
-                    <h5>都道府県</h5>
+                    <h5>都道府県 <span style="color: red;">*</span></h5>
                     <select class="form-select" name="pet[prefecture_id]">
                         @foreach ($prefectures as $prefecture)
                             <option value="{{ $prefecture->id }}" {{ old('pet.prefecture_id', $pet->prefecture_id) == $prefecture->id ? 'selected' : '' }}>{{ $prefecture->name }}</option>
@@ -77,13 +78,13 @@
                 </div>
                         
                 <div class="mb-4">
-                    <h5>受け渡し可能地域<small>（50字以内）</small></h5>
+                    <h5>受け渡し可能地域 <span style="color: red;">*</span><small>（50字以内）</small></h5>
                     <input type="text" class="form-control" name="pet[delivery_area]" value="{{ old('pet.delivery_area', $pet->delivery_area) }}"/>
                     <p style="color:red">{{ $errors->first('pet.delivery_area') }}</p>
                 </div>
                         
                 <div class="mb-4">
-                    <h5>詳細情報<small>（2000字以内）</small></h5>
+                    <h5>詳細情報 <span style="color: red;">*</span><small>（2000字以内）</small></h5>
                     <textarea class="form-control" rows="10" name="pet[detail]" placeholder="疾患、アレルギー、避妊・去勢の有無、性格、えさの好みなど">{{ old('pet.detail', $pet->detail) }}</textarea>
                     <p style="color:red">{{ $errors->first('pet.detail') }}</p>
                 </div>

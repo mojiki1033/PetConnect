@@ -25,13 +25,13 @@ class PetRequest extends FormRequest
     {
         return [
             'pet.title' => 'required|string|max:50',
-            'pet.sex_id' => 'required',
+            'pet.sex_id' => 'required|integer',
             'pet.age' => 'required|integer',
-            'pet.species_id' => 'required',
-            'pet.breed' => 'required|max:50',
-            'pet.prefecture_id' => 'required',
-            'pet.delivery_area' => 'required|max:50',
-            'pet.detail' => 'string|max:2000',
+            'pet.species_id' => 'required|integer',
+            'pet.breed' => 'required|string|max:50',
+            'pet.prefecture_id' => 'required|integer',
+            'pet.delivery_area' => 'required|string|max:50',
+            'pet.detail' => 'nullable|string|max:2000',
         ];
     }
 }
