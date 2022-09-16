@@ -19,9 +19,9 @@ Route::controller(PetController::class)->group(function () {
     
     Route::get('/pets', 'index');
 
-    Route::get('/pets/create', 'create');
+    Route::get('/pets/create', 'create')->middleware('auth');
 
-    Route::post('/pets', 'store');
+    Route::post('/pets', 'store')->middleware('auth');
 
     Route::get('/pets/{pet}', 'show');
 
@@ -33,7 +33,8 @@ Route::controller(PetController::class)->group(function () {
 });
 
 Route::controller(CommentController::class)->group(function () {
-    Route::post('/pets/{pet}/comments', 'store');
+    
+    Route::post('/pets/{pet}/comment', 'store');
 });
 
 Auth::routes();

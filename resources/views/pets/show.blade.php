@@ -13,7 +13,7 @@
                 <li class="breadcrumb-item active" aria-current="page">{{ $pet->title }}</li>
             </ol>
         </nav>
-        <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto">
+        <div class="gy-4 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
             <dl class="row">
                 <h2>{{ $pet->title }}</h2>
                 <hr>
@@ -45,38 +45,59 @@
                 <dd class="col-12 col-sm-12 col-md-9">{!! nl2br(e($pet->detail)) !!}</dd>
             </dl>
             
-            @if ($pet->status_id == 3)
-                <div class="d-grid mb-5 col-6 mx-auto">
-                    <button type="button" class="btn btn-secondary" disabled>マッチング成立済</button>
-                </div>
-                @elseif ($pet->user->id == Auth::id())
+            @if ($pet->status_id !== 3)
+                @if ($pet->user->id == Auth::id())
                     <a href="/pets/{{ $pet->id }}/edit" class="d-grid mb-5 col-6 mx-auto">
                         <button type="button" class="btn btn-success">投稿の編集</button>
                     </a>
-                    @elseif ($pet->status_id == 2)
-                        <div class="d-grid mb-5 col-6 mx-auto">
-                            <button type="button" class="btn btn-secondary" disabled>募集一時停止中</button>
-                        </div>
+                @elseif ($pet->status_id == 1)
+                    @if (Auth::check())
+                        <a class="d-grid mb-5 col-6 mx-auto">
+                            <button type="button" class="btn btn-success">引き取りを申し出る</button>
+                        </a>
+                    @else
+                        <a href="/login" class="d-grid mb-5 col-8 col-sm-8 col-md-6 mx-auto">
+                            <button type="button" class="btn btn-primary">引き取りを申し出るにはログインが必要です</button>
+                        </a>
+                    @endif
+                @else
+                    <div class="d-grid mb-5 col-6 mx-auto">
+                        <button type="button" class="btn btn-danger" disabled>募集一時停止中</button>
+                    </div>
+                @endif
+            @else
+                <div class="d-grid mb-5 col-6 mx-auto">
+                    <button type="button" class="btn btn-secondary" disabled>マッチング成立済</button>
+                </div>
             @endif
             
             <div class="col-12 col-sm-12 col-md-9">
                 <h3>コメント</h3>
                 <hr>
                 @foreach ($comments as $comment)
-                    <h5>{{ $comment->user->name }}：<small class="h6 text-muted">{{ $comment->created_at }}</small></h5>
+                    <h5>
+                        {{ isset($comment->user->name) ? $comment->user->name : '削除されたユーザー'}}：
+                        <small class="h6 text-muted">{{ $comment->created_at }}</small>
+                    </h5>
                     <p>{!! nl2br(e($comment->content)) !!}</p>
                     <hr>
                 @endforeach
                 
                 @if ($pet->status_id !== 3)
-                    <form action="/pets/{{$pet->id}}/comments" method="POST">
-                        @csrf
-                        <textarea class="form-control" rows="10" name="content">{{ old('content') }}</textarea>
-                        <p style="color:red">{{ $errors->first('content') }}</p>
-                        <div class="d-grid col-6 mx-auto">
-                            <input class="btn btn-primary " type="submit" value="コメントを送信"/>
-                        </div>
-                    </form>
+                    @if (Auth::check())
+                        <form action="/pets/{{$pet->id}}/comment" method="POST">
+                            @csrf
+                            <textarea class="form-control" rows="10" name="content">{{ old('content') }}</textarea>
+                            <p style="color:red">{{ $errors->first('content') }}</p>
+                            <div class="d-grid col-6 mx-auto">
+                                <input class="btn btn-primary " type="submit" value="コメントを送信"/>
+                            </div>
+                        </form>
+                    @else
+                        <a href="/login" class="d-grid mb-5 col-8 mx-auto">
+                            <button type="button" class="btn btn-primary">コメントをするにはログインが必要です</button>
+                        </a>
+                    @endif
                 @endif
             </div>
         </div>
