@@ -2,14 +2,14 @@
 
 @section('content')
 <head>
-    <title>ペット一覧 - PetConnect</title>
+    <title>ペット検索 - PetConnect</title>
 </head>
 <body>
     <div class="container">
         <nav style="--bs-breadcrumb-divider: '>';">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">ホーム</a></li>
-                <li class="breadcrumb-item active" aria-current="page">ペット一覧</li>
+                <li class="breadcrumb-item active" aria-current="page">ペット検索</li>
             </ol>
         </nav>
         <a href='/pets/create'>

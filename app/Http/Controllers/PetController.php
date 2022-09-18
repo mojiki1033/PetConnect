@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Auth;
 
 class PetController extends Controller
 {
+    public function top()
+    {
+        return view('pets/top');
+    }
+    
     public function index(Pet $pet)
     {
         return view('pets/index')->with(['pets'=> $pet->getPaginateByLimit()]);
@@ -62,7 +67,12 @@ class PetController extends Controller
     
     public function delete(Pet $pet)
     {
-        $pet->delete();
+        $pet->forceDelete();
         return redirect('/pets');
+    }
+    
+    public function search()
+    {
+        
     }
 }

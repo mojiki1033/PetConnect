@@ -24,7 +24,7 @@ class CreatePetsTable extends Migration
             $table->foreignId('prefecture_id')->constrained();
             $table->string('delivery_area', 50);
             $table->string('detail', 2000)->nullable();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
             $table->softDeletes();
         });
