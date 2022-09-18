@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PetController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +15,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::controller(PetController::class)->group(function () {
+    
+    Route::get('/', 'top');
+    
+    Route::get('/pets', 'index');
+    
+    Route::get('/pets/search', 'search');
+
+    Route::get('/pets/create', 'create')->middleware('auth');
+
+    Route::post('/pets', 'store')->middleware('auth');
+
+    Route::get('/pets/{pet}', 'show');
+
+    Route::get('/pets/{pet}/edit', 'edit');
+
+    Route::put('/pets/{pet}', 'update');
+
+    Route::delete('/pets/{pet}', 'delete');
+});
+
+Route::controller(CommentController::class)->group(function () {
+    
+    Route::post('/pets/{pet}/comment', 'store');
 });
 
 Auth::routes();
