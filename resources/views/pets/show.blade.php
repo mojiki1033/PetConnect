@@ -47,18 +47,18 @@
             
             @if ($pet->status_id !== 3)
                 @if ($pet->user->id == Auth::id())
-                    <a href="/pets/{{ $pet->id }}/edit" class="d-grid mb-5 col-6 mx-auto">
-                        <button type="button" class="btn btn-success">投稿の編集</button>
-                    </a>
+                    <div class="d-grid mb-5 col-6 mx-auto">
+                        <button type="button" class="btn btn-success" onclick="location.href='/pets/{{ $pet->id }}/edit'">投稿の編集</button>
+                    </div>
                 @elseif ($pet->status_id == 1)
                     @if (Auth::check())
-                        <a class="d-grid mb-5 col-6 mx-auto">
-                            <button type="button" class="btn btn-success">引き取りを申し出る</button>
-                        </a>
+                        <div class="d-grid mb-5 col-6 mx-auto">
+                            <button type="button" class="btn btn-danger">引き取りを申し出る</button>
+                        </div>
                     @else
-                        <a href="/login" class="d-grid mb-5 col-8 col-sm-8 col-md-6 mx-auto">
-                            <button type="button" class="btn btn-info">引き取りを申し出るにはログインが必要です</button>
-                        </a>
+                        <div class="d-grid mb-5 col-8 col-sm-8 col-md-6 mx-auto">
+                            <button type="button" class="btn btn-info" onclick="location.href='/login'">引き取りを申し出るにはログインが必要です</button>
+                        </div>
                     @endif
                 @else
                     <div class="d-grid mb-5 col-6 mx-auto">
@@ -90,13 +90,13 @@
                             <textarea class="form-control" rows="10" name="content">{{ old('content') }}</textarea>
                             <p style="color:red">{{ $errors->first('content') }}</p>
                             <div class="d-grid col-6 mx-auto">
-                                <input class="btn btn-primary " type="submit" value="コメントを送信"/>
+                                <input class="btn btn-primary " type="submit" value="コメントを送信">
                             </div>
                         </form>
                     @else
-                        <a href="/login" class="d-grid mb-5 col-8 mx-auto">
-                            <button type="button" class="btn btn-info">コメントをするにはログインが必要です</button>
-                        </a>
+                        <div class="d-grid mb-5 col-8 mx-auto">
+                            <button type="button" class="btn btn-info" onclick="location.href='/login'">コメントをするにはログインが必要です</button>
+                        </div>
                     @endif
                 @endif
             </div>

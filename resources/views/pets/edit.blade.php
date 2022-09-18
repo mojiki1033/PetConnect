@@ -32,7 +32,7 @@
                 
                 <div class="form-group">
                     <label for="title" class="h5">タイトル <span style="color: red;">*</span><small>（50字以内）</small></label>
-                    <input type="text" class="form-control" name="pet[title]" id="title" value="{{ old('pet.title', $pet->title) }}"/>
+                    <input type="text" class="form-control" name="pet[title]" id="title" value="{{ old('pet.title', $pet->title) }}">
                     <p style="color:red">{{ $errors->first('pet.title') }}</p>
                 </div>
                 
@@ -50,14 +50,14 @@
                     
                 <div class="form-group">
                     <label for="breed" class="h5">品種名 <span style="color: red;">*</span><small>（50字以内）</small></label>
-                    <input type="text" class="form-control" name="pet[breed]" id="breed" value="{{ old('pet.breed', $pet->breed) }}"/>
+                    <input type="text" class="form-control" name="pet[breed]" id="breed" value="{{ old('pet.breed', $pet->breed) }}">
                     <p style="color:red">{{ $errors->first('pet.breed') }}</p>
                 </div>
                     
                 <div class="form-group">
                     <label for="age" class="h5">ペットの年齢 <span style="color: red;">*</span></label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="pet[age]" id="age" placeholder="半角数字のみ（例：8）" value="{{ old('pet.age', $pet->age) }}"/>
+                        <input type="text" class="form-control" name="pet[age]" id="age" placeholder="半角数字のみ（例：8）" value="{{ old('pet.age', $pet->age) }}">
                         <span class="input-group-text">歳</span>
                     </div>
                     <p style="color:red">{{ $errors->first('pet.age') }}</p>
@@ -89,7 +89,7 @@
                         
                 <div class="form-group">
                     <label for="delivery_area" class="h5">受け渡し可能地域 <span style="color: red;">*</span><small>（50字以内）</small></label>
-                    <input type="text" class="form-control" name="pet[delivery_area]" id="delivery_area" value="{{ old('pet.delivery_area', $pet->delivery_area) }}"/>
+                    <input type="text" class="form-control" name="pet[delivery_area]" id="delivery_area" value="{{ old('pet.delivery_area', $pet->delivery_area) }}">
                     <p style="color:red">{{ $errors->first('pet.delivery_area') }}</p>
                 </div>
                         
@@ -100,29 +100,36 @@
                 </div>
                 
                 <div class="d-grid mb-2 col-6 mx-auto">
-                    <input class="btn btn-primary " type="submit" value="変更を保存"/>
+                    <input class="btn btn-primary " type="submit" value="変更を保存">
                 </div>
             </form>
             
-            <form action="/pets/{{ $pet->id }}" id="form_delete" method="post" style="display:inline">
-                @csrf
-                @method('DELETE')
-                <input type="submit" style="display:none">
-                
-                <div class="d-grid col-6 mx-auto">
-                    <button type="button" class="btn btn-danger" onclick="return deletePost(this);">投稿の削除</button>
-                </div>
-            </form>
+            <div class="d-grid col-6 mx-auto">
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">投稿の削除</button>
+            </div>
         </div>
     </div>
     
-    <script>
-        function deletePost(e) {
-            'use strict';
-            if (confirm('削除すると元に戻せません。\n本当に削除しますか？')) {
-                document.getElementById('form_delete').submit();
-            }
-        }
-    </script>
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">削除の確認</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+                </div>
+                <div class="modal-body">
+                    <p>削除すると元に戻せません。<br>本当に削除しますか？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+                    <form action="/pets/{{ $pet->id }}" id="form_delete" method="post" style="display:inline">
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" class="btn btn-danger" value="削除">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 @endsection

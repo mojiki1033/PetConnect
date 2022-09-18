@@ -20,7 +20,7 @@
                 
                 <div class="form-group">
                     <label for="title" class="h5">タイトル <span style="color: red;">*</span><small>（50字以内）</small></label>
-                    <input type="text" class="form-control" name="pet[title]" id="title" value="{{ old('pet.title') }}"/>
+                    <input type="text" class="form-control" name="pet[title]" id="title" value="{{ old('pet.title') }}">
                     <p style="color:red">{{ $errors->first('pet.title') }}</p>
                 </div>
             
@@ -39,14 +39,14 @@
             
                 <div class="form-group">
                     <label for="breed" class="h5">品種名 <span style="color: red;">*</span><small>（50字以内）</small></label>
-                    <input type="text" class="form-control" name="pet[breed]" id="breed" value="{{ old('pet.breed') }}"/>
+                    <input type="text" class="form-control" name="pet[breed]" id="breed" value="{{ old('pet.breed') }}">
                     <p style="color:red">{{ $errors->first('pet.breed') }}</p>
                 </div>
             
                 <div class="form-group">
                     <label for="age" class="h5">ペットの年齢 <span style="color: red;">*</span></label>
                     <div class="input-group">
-                        <input type="text" class="form-control" name="pet[age]" id="age" placeholder="半角数字のみ（例：8）" value="{{ old('pet.age') }}"/>
+                        <input type="text" class="form-control" name="pet[age]" id="age" placeholder="半角数字のみ（例：8）" value="{{ old('pet.age') }}">
                         <span class="input-group-text">歳</span>
                     </div>
                     <p style="color:red">{{ $errors->first('pet.age') }}</p>
@@ -80,7 +80,7 @@
                 
                 <div class="form-group">
                     <label for="delivery_area" class="h5">受け渡し可能地域 <span style="color: red;">*</span><small>（50字以内）</small></label>
-                    <input type="text" class="form-control" name="pet[delivery_area]" id="delivery_area" value="{{ old('pet.delivery_area') }}"/>
+                    <input type="text" class="form-control" name="pet[delivery_area]" id="delivery_area" value="{{ old('pet.delivery_area') }}">
                     <p style="color:red">{{ $errors->first('pet.delivery_area') }}</p>
                 </div>
                 
@@ -91,7 +91,7 @@
                 </div>
                 
                 <div class="d-grid col-6 mx-auto">
-                    <input class="btn btn-primary " type="submit" value="投稿"/>
+                    <input class="btn btn-primary " type="submit" value="投稿">
                 </div>
             </form>
         </div>

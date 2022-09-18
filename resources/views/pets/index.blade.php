@@ -12,9 +12,9 @@
                 <li class="breadcrumb-item active" aria-current="page">ペット検索</li>
             </ol>
         </nav>
-        <a href='/pets/create'>
-            <button type="button" class="btn btn-primary">ペットの投稿</button>
-        </a>
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-primary" onclick="location.href='/pets/create'">ペットの投稿</button>
+        </div>
         
         <div class="row">
             @foreach ($pets as $pet)
