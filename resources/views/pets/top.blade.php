@@ -7,7 +7,7 @@
 <body>
     <div class="container">
         <div class="gy-4 col-lg-9 col-xl-8 col-xxl-7 mx-auto">
-            <h4>PetConnectは、やむを得ず手放さざるを得なくなったペットの引き取り主を募集するマッチングサイトです。</h4>
+            <h4>PetConnectは、ペットの引き取り主を募集するマッチングサイトです。</h4>
             
             <div class="d-flex justify-content-center">
                 <div class="mx-1">

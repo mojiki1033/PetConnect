@@ -19,9 +19,14 @@ class PetController extends Controller
         return view('pets/top');
     }
     
-    public function index(Pet $pet)
+    public function index(Pet $pet, Status $status, Species $species, Sex $sex, Prefecture $prefecture)
     {
-        return view('pets/index')->with(['pets'=> $pet->getPaginateByLimit()]);
+        return view('pets/index')
+        ->with(['pets'=> $pet->getPaginateByLimit()])
+        ->with(['statuses' => $status->get()])
+        ->with(['species' => $species->get()])
+        ->with(['sexes' => $sex->get()])
+        ->with(['prefectures' => $prefecture->get()]);
     }
     
     public function show(Pet $pet, Comment $comment)
