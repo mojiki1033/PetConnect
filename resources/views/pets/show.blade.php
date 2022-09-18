@@ -57,7 +57,7 @@
                         </a>
                     @else
                         <a href="/login" class="d-grid mb-5 col-8 col-sm-8 col-md-6 mx-auto">
-                            <button type="button" class="btn btn-primary">引き取りを申し出るにはログインが必要です</button>
+                            <button type="button" class="btn btn-info">引き取りを申し出るにはログインが必要です</button>
                         </a>
                     @endif
                 @else
@@ -76,7 +76,7 @@
                 <hr>
                 @foreach ($comments as $comment)
                     <h5>
-                        {{ isset($comment->user->name) ? $comment->user->name : '削除されたユーザー'}}：
+                        {{ isset($comment->user_id) ? $comment->user->name : '<span class="text-muted">削除されたユーザー</span>'}}：
                         <small class="h6 text-muted">{{ $comment->created_at }}</small>
                     </h5>
                     <p>{!! nl2br(e($comment->content)) !!}</p>
@@ -95,7 +95,7 @@
                         </form>
                     @else
                         <a href="/login" class="d-grid mb-5 col-8 mx-auto">
-                            <button type="button" class="btn btn-primary">コメントをするにはログインが必要です</button>
+                            <button type="button" class="btn btn-info">コメントをするにはログインが必要です</button>
                         </a>
                     @endif
                 @endif

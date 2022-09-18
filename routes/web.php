@@ -17,7 +17,11 @@ use App\Http\Controllers\CommentController;
 
 Route::controller(PetController::class)->group(function () {
     
+    Route::get('/', 'top');
+    
     Route::get('/pets', 'index');
+    
+    Route::get('/pets/search', 'search');
 
     Route::get('/pets/create', 'create')->middleware('auth');
 

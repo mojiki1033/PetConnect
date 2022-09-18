@@ -17,7 +17,7 @@ class StatusesTableSeeder extends Seeder
         DB::table("statuses")->insert(
             [
                 [
-                    'name'=>'飼い主募集中',
+                    'name'=>'引き取り主募集中',
                     'created_at'=>now(),
                     'updated_at'=>now(),
                 ],
