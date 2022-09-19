@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Model;
 use App\Models\Pet;
 use App\Models\Status;
 use App\Models\Species;
@@ -76,8 +77,32 @@ class PetController extends Controller
         return redirect('/pets');
     }
     
-    public function search()
+    public function search(Request $request, Pet $pet)
     {
+        $result = Pet::get();
         
+        if ($request['status'] != 0) {
+            $result = $result->where('status_id', $request['status'])->get();
+        }
+        
+        if ($request['species'] != 0) {
+            $result = $result->where('species_id', $request['species'])->get();
+        }
+        
+        if ($request['sex'] != 0) {
+            $result = $result->where('sex_id', $request['sex'])->get();
+        }
+        
+        if ($request['prefecture'] != 0) {
+            $result = $result->where('prefecture_id', $request['prefecture'])->get();
+        }
+        
+        if ($request['sort'] == 'asc') {
+            $result = $result->sortBy('updated_at');
+        }else{
+            $result = $result->sortByDesc('updated_at');
+        }
+        
+        return view('pets/search')->with(['result' => $result]);
     }
 }

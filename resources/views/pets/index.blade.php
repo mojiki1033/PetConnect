@@ -18,17 +18,17 @@
                 <button type="button" class="btn btn-primary" onclick="location.href='/pets/create'">ペットの投稿</button>
             </div>
             
-            <form action="/pets" method="GET">
+            <form action="/pets/search" method="GET">
                 <dl class="row">
                     <dt class="col-12 col-sm-12 col-md-2">募集状況</dt>
                     <dd class="col-12 col-sm-12 col-md-10">
                         <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="search[status]" id="status_all" checked value="0">
+                            <input type="radio" class="form-check-input" name="status" id="status_all" checked value="0">
                             <label for="status_all" class="form-check-label">指定なし</label>
                         </div>
                         @foreach ($statuses as $status)
                             <div class="form-check form-check-inline">
-                                <input type="radio" class="form-check-input" name="search[status]" id="status_{{$status->id}}" value="{{$status->id}}">
+                                <input type="radio" class="form-check-input" name="status" id="status_{{$status->id}}" value="{{$status->id}}">
                                 <label for="status_{{$status->id}}" class="form-check-label">{{$status->name}}</label>
                             </div>
                         @endforeach
@@ -39,12 +39,12 @@
                     <dt class="col-12 col-sm-12 col-md-2">ペットの種類</dt>
                     <dd class="col-12 col-sm-12 col-md-10">
                         <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="search[species]" id="species_all" checked value="0">
+                            <input type="radio" class="form-check-input" name="species" id="species_all" checked value="0">
                             <label for="species_all" class="form-check-label">指定なし</label>
                         </div>
                         @foreach ($species as $species)
                             <div class="form-check form-check-inline">
-                                <input type="radio" class="form-check-input" name="search[species]" id="species_{{$species->id}}" value="{{$species->id}}">
+                                <input type="radio" class="form-check-input" name="species" id="species_{{$species->id}}" value="{{$species->id}}">
                                 <label for="species_{{$species->id}}" class="form-check-label">{{$species->name}}</label>
                             </div>
                         @endforeach
@@ -55,12 +55,12 @@
                     <dt class="col-12 col-sm-12 col-md-2">ペットの性別</dt>
                     <dd class="col-12 col-sm-12 col-md-10">
                         <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="search[sex]" id="sex_all" checked value="0">
+                            <input type="radio" class="form-check-input" name="sex" id="sex_all" checked value="0">
                             <label for="sex_all" class="form-check-label">指定なし</label>
                         </div>
                         @foreach ($sexes as $sex)
                             <div class="form-check form-check-inline">
-                                <input type="radio" class="form-check-input" name="search[sex]" id="sex_{{$sex->id}}" value="{{$sex->id}}">
+                                <input type="radio" class="form-check-input" name="sex" id="sex_{{$sex->id}}" value="{{$sex->id}}">
                                 <label for="sex_{{$sex->id}}" class="form-check-label">{{$sex->name}}</label>
                             </div>
                         @endforeach
@@ -70,7 +70,7 @@
                     
                     <dt class="col-12 col-sm-12 col-md-2">都道府県</dt>
                     <dd class="col-12 col-sm-12 col-md-10">
-                        <select class="form-select" name="search[prefecture]">
+                        <select class="form-select" name="prefecture">
                             <option value="0">指定なし</option>
                             @foreach ($prefectures as $prefecture)
                                 <option value="{{ $prefecture->id }}">{{ $prefecture->name }}</option>
@@ -83,11 +83,11 @@
                     <dt class="col-12 col-sm-12 col-md-2">並べ替え</dt>
                     <dd class="col-12 col-sm-12 col-md-10">
                         <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="search[sort]" id="ascByCreated_at" checked value="asc">
+                            <input type="radio" class="form-check-input" name="sort" id="ascByCreated_at" checked value="asc">
                             <label for="ascByCreated_at" class="form-check-label">投稿が古い順</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="search[sort]" id="descByCreated_at" value="desc">
+                            <input type="radio" class="form-check-input" name="sort" id="descByCreated_at" value="desc">
                             <label for="descByCreated_at" class="form-check-label">投稿が新しい順</label>
                         </div>
                     </dd>

@@ -16,7 +16,7 @@
         
         
             <div class="row">
-                @foreach ($pets as $pet)
+                @foreach ($result as $pet)
                     <div >
                         @if ($pet->status_id == 1)
                             <span class="badge text-bg-success">{{ $pet->status->name }}</span>
