@@ -14,16 +14,14 @@
         </nav>
         
         <div class="col-lg-11 col-xl-11 col-xxl-10 mx-auto">
-            <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-primary" onclick="location.href='/pets/create'">ペットの投稿</button>
-            </div>
-            
             <form action="/pets/search" method="GET">
                 <dl class="row">
+                    <hr>
+                    
                     <dt class="col-12 col-sm-12 col-md-2">募集状況</dt>
                     <dd class="col-12 col-sm-12 col-md-10">
                         <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="status" id="status_all" checked value="0">
+                            <input type="radio" class="form-check-input" name="status" id="status_all" checked value="">
                             <label for="status_all" class="form-check-label">指定なし</label>
                         </div>
                         @foreach ($statuses as $status)
@@ -39,7 +37,7 @@
                     <dt class="col-12 col-sm-12 col-md-2">ペットの種類</dt>
                     <dd class="col-12 col-sm-12 col-md-10">
                         <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="species" id="species_all" checked value="0">
+                            <input type="radio" class="form-check-input" name="species" id="species_all" checked value="">
                             <label for="species_all" class="form-check-label">指定なし</label>
                         </div>
                         @foreach ($species as $species)
@@ -55,7 +53,7 @@
                     <dt class="col-12 col-sm-12 col-md-2">ペットの性別</dt>
                     <dd class="col-12 col-sm-12 col-md-10">
                         <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="sex" id="sex_all" checked value="0">
+                            <input type="radio" class="form-check-input" name="sex" id="sex_all" checked value="">
                             <label for="sex_all" class="form-check-label">指定なし</label>
                         </div>
                         @foreach ($sexes as $sex)
@@ -71,7 +69,7 @@
                     <dt class="col-12 col-sm-12 col-md-2">都道府県</dt>
                     <dd class="col-12 col-sm-12 col-md-10">
                         <select class="form-select" name="prefecture">
-                            <option value="0">指定なし</option>
+                            <option value="">指定なし</option>
                             @foreach ($prefectures as $prefecture)
                                 <option value="{{ $prefecture->id }}">{{ $prefecture->name }}</option>
                             @endforeach
@@ -92,7 +90,7 @@
                         </div>
                     </dd>
                     
-                    <div class="d-grid col-6 mx-auto">
+                    <div class="d-grid mb-5 col-6 mx-auto">
                         <input class="btn btn-primary " type="submit" value="検索">
                     </div>
                 

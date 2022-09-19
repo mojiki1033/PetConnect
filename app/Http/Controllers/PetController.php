@@ -77,32 +77,37 @@ class PetController extends Controller
         return redirect('/pets');
     }
     
-    public function search(Request $request, Pet $pet)
+    public function search(Request $request, Status $status, Species $species, Sex $sex, Prefecture $prefecture)
     {
-        $result = Pet::get();
+        $result = Pet::query();
         
-        if ($request['status'] != 0) {
-            $result = $result->where('status_id', $request['status'])->get();
+        if (!is_null($request['status'])) {
+            $result = $result->where('status_id', $request['status']);
         }
         
-        if ($request['species'] != 0) {
-            $result = $result->where('species_id', $request['species'])->get();
+        if (!is_null($request['species'])) {
+            $result = $result->where('species_id', $request['species']);
         }
         
-        if ($request['sex'] != 0) {
-            $result = $result->where('sex_id', $request['sex'])->get();
+        if (!is_null($request['sex'])) {
+            $result = $result->where('sex_id', $request['sex']);
         }
         
-        if ($request['prefecture'] != 0) {
-            $result = $result->where('prefecture_id', $request['prefecture'])->get();
+        if (!is_null($request['prefecture'])) {
+            $result = $result->where('prefecture_id', $request['prefecture']);
         }
         
         if ($request['sort'] == 'asc') {
-            $result = $result->sortBy('updated_at');
+            $result = $result->orderBy('updated_at', 'asc')->paginate(10);
         }else{
-            $result = $result->sortByDesc('updated_at');
+            $result = $result->orderBy('updated_at', 'desc')->paginate(10);
         }
         
-        return view('pets/search')->with(['result' => $result]);
+        return view('pets/search')
+        ->with(['result' => $result])
+        ->with(['statuses' => $status->get()])
+        ->with(['species' => $species->get()])
+        ->with(['sexes' => $sex->get()])
+        ->with(['prefectures' => $prefecture->get()]);
     }
 }
