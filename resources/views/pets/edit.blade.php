@@ -16,7 +16,7 @@
         </nav>
         <div class="col-lg-9 col-xl-8 col-xxl-7 mx-auto">
             <h3 class="text-center mb-5">投稿の編集</h3>
-            <p><span style="color: red;">*</span> が付いている欄は必須項目です</p>
+            <p>「<span style="color: red;">*</span>」が付いている欄は必須項目です</p>
             <form action="/pets/{{ $pet->id }}" method="POST">
                 @csrf
                 @method('put')
