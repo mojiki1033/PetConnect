@@ -5,8 +5,8 @@
 *.html diff=html
 *.md diff=markdown
 *.php diff=php
-; heroku/* linguist-vendored
 public/css/app.css linguist-vendored
+public/js/app.js linguist-vendored
 
 /.github export-ignore
 CHANGELOG.md export-ignore
