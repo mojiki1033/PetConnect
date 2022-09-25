@@ -29,7 +29,7 @@
                     <select class="form-select" name="pet[species_id]" id="species">
                         <option value="">-----</option>
                         @foreach ($species as $species)
-                            <option value="{{ $species->id }}" {{ old('pet.species_id') == $species->id ? 'selected' : ''}}>
+                            <option value="{{ $species->id }}" {{ old('pet.species_id') == $species->id ? 'selected' : '' }}>
                                 {{ $species->name }}
                             </option>
                         @endforeach
@@ -57,7 +57,7 @@
                     <select class="form-select" name="pet[sex_id]" id="sex">
                         <option value="">-----</option>
                         @foreach ($sexes as $sex)
-                            <option value="{{ $sex->id }}" {{ old('pet.sex_id') == $sex->id ? 'selected' : ''}}>
+                            <option value="{{ $sex->id }}" {{ old('pet.sex_id') == $sex->id ? 'selected' : '' }}>
                                 {{ $sex->name }}
                             </option>
                         @endforeach
@@ -70,7 +70,7 @@
                     <select class="form-select" name="pet[prefecture_id]" id="prefecture">
                         <option value="">-----</option>
                         @foreach ($prefectures as $prefecture)
-                            <option value="{{ $prefecture->id }}" {{ old('pet.prefecture_id') == $prefecture->id ? 'selected' : ''}}>
+                            <option value="{{ $prefecture->id }}" {{ old('pet.prefecture_id') == $prefecture->id ? 'selected' : '' }}>
                                 {{ $prefecture->name }}
                             </option>
                         @endforeach

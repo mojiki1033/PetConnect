@@ -26,8 +26,8 @@
                         </div>
                         @foreach ($statuses as $status)
                             <div class="form-check form-check-inline">
-                                <input type="radio" class="form-check-input" name="status" id="status_{{$status->id}}" value="{{$status->id}}">
-                                <label for="status_{{$status->id}}" class="form-check-label">{{$status->name}}</label>
+                                <input type="radio" class="form-check-input" name="status" id="status_{{ $status->id }}" value="{{ $status->id }}">
+                                <label for="status_{{ $status->id }}" class="form-check-label">{{ $status->name }}</label>
                             </div>
                         @endforeach
                     </dd>
@@ -42,10 +42,17 @@
                         </div>
                         @foreach ($species as $species)
                             <div class="form-check form-check-inline">
-                                <input type="radio" class="form-check-input" name="species" id="species_{{$species->id}}" value="{{$species->id}}">
-                                <label for="species_{{$species->id}}" class="form-check-label">{{$species->name}}</label>
+                                <input type="radio" class="form-check-input" name="species" id="species_{{ $species->id }}" value="{{ $species->id }}">
+                                <label for="species_{{ $species->id }}" class="form-check-label">{{ $species->name }}</label>
                             </div>
                         @endforeach
+                    </dd>
+                    
+                    <hr>
+                    
+                    <dt class="col-12 col-sm-12 col-md-2">品種名</dt>
+                    <dd class="col-12 col-sm-12 col-md-10">
+                        <input type="text" class="form-control" name="breed" value="">
                     </dd>
                     
                     <hr>
@@ -58,8 +65,8 @@
                         </div>
                         @foreach ($sexes as $sex)
                             <div class="form-check form-check-inline">
-                                <input type="radio" class="form-check-input" name="sex" id="sex_{{$sex->id}}" value="{{$sex->id}}">
-                                <label for="sex_{{$sex->id}}" class="form-check-label">{{$sex->name}}</label>
+                                <input type="radio" class="form-check-input" name="sex" id="sex_{{ $sex->id }}" value="{{ $sex->id }}">
+                                <label for="sex_{{ $sex->id }}" class="form-check-label">{{ $sex->name }}</label>
                             </div>
                         @endforeach
                     </dd>
@@ -81,16 +88,16 @@
                     <dt class="col-12 col-sm-12 col-md-2">並べ替え</dt>
                     <dd class="col-12 col-sm-12 col-md-10">
                         <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="sort" id="ascByCreated_at" checked value="asc">
-                            <label for="ascByCreated_at" class="form-check-label">投稿が古い順</label>
+                            <input type="radio" class="form-check-input" name="sort" id="descByCreated_at" checked value="desc">
+                            <label for="descByCreated_at" class="form-check-label">更新が新しい順</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="sort" id="descByCreated_at" value="desc">
-                            <label for="descByCreated_at" class="form-check-label">投稿が新しい順</label>
+                            <input type="radio" class="form-check-input" name="sort" id="ascByCreated_at" value="asc">
+                            <label for="ascByCreated_at" class="form-check-label">更新が古い順</label>
                         </div>
                     </dd>
                     
-                    <div class="d-grid mb-5 col-6 mx-auto">
+                    <div class="d-grid mb-3 col-6 mx-auto">
                         <input class="btn btn-primary " type="submit" value="検索">
                     </div>
                 
