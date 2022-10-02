@@ -140,8 +140,20 @@ class PetController extends Controller
         //検索結果をぺジネートし、$resultに代入
         $result = $query->paginate(10);
         
+        //各リクエストパラメータを代入した変数から配列を作成（検索フォームの値を保持するため）
+        $search = [
+            "status" => $search_status,
+            "species" => $search_species,
+            "method" =>$search_method,
+            "breed" => $search_breed,
+            "sex" => $search_sex,
+            "prefecture" => $search_prefecture,
+            "sort" => $search_sort,
+        ];
+        
         return view('pets/search')
         ->with('result', $result)
+        ->with('search', $search)
         ->with('statuses', $status->get())
         ->with('species', $species->get())
         ->with('sexes', $sex->get())

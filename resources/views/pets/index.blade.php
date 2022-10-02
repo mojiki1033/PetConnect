@@ -21,7 +21,7 @@
                     <dt class="col-12 col-sm-12 col-md-2">募集状況</dt>
                     <dd class="col-12 col-sm-12 col-md-10">
                         <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="status" id="status_all" checked value="">
+                            <input type="radio" class="form-check-input" name="status" id="status_all" value="" checked>
                             <label for="status_all" class="form-check-label">指定なし</label>
                         </div>
                         @foreach ($statuses as $status)
@@ -37,7 +37,7 @@
                     <dt class="col-12 col-sm-12 col-md-2">ペットの種類</dt>
                     <dd class="col-12 col-sm-12 col-md-10">
                         <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="species" id="species_all" checked value="">
+                            <input type="radio" class="form-check-input" name="species" id="species_all" value="" checked>
                             <label for="species_all" class="form-check-label">指定なし</label>
                         </div>
                         @foreach ($species as $species)
@@ -53,7 +53,7 @@
                     <dt class="col-12 col-sm-12 col-md-2">品種名</dt>
                     <dd class="col-12 col-sm-12 col-md-10">
                         <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="method" id="method_and" checked value="and">
+                            <input type="radio" class="form-check-input" name="method" id="method_and" value="and" checked>
                             <label for="method_and" class="form-check-label">AND検索</label>
                         </div>
                         <div class="form-check form-check-inline">
@@ -68,7 +68,7 @@
                     <dt class="col-12 col-sm-12 col-md-2">ペットの性別</dt>
                     <dd class="col-12 col-sm-12 col-md-10">
                         <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="sex" id="sex_all" checked value="">
+                            <input type="radio" class="form-check-input" name="sex" id="sex_all" value="" checked>
                             <label for="sex_all" class="form-check-label">指定なし</label>
                         </div>
                         @foreach ($sexes as $sex)
@@ -96,7 +96,7 @@
                     <dt class="col-12 col-sm-12 col-md-2">並べ替え</dt>
                     <dd class="col-12 col-sm-12 col-md-10">
                         <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="sort" id="descByCreated_at" checked value="desc">
+                            <input type="radio" class="form-check-input" name="sort" id="descByCreated_at" value="desc" checked>
                             <label for="descByCreated_at" class="form-check-label">更新が新しい順</label>
                         </div>
                         <div class="form-check form-check-inline">
