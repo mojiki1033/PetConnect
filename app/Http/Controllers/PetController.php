@@ -82,11 +82,13 @@ class PetController extends Controller
         //リクエストパラメータをそれぞれ変数に代入
         $search_status = $request->input('status');
         $search_species = $request->input('species');
+        $search_method = $request->input('method');
         $search_breed = mb_convert_kana($request->input('breed'), 's');    //スペースをすべて半角に変換
         $search_sex = $request->input('sex');
         $search_prefecture = $request->input('prefecture');
         $search_sort = $request->input('sort');
         
+        //Petテーブルの全レコードを$queryに代入
         $query = Pet::query();
         
         //リクエストパラメータが、対応するカラムと一致しているレコードを１項目ずつ絞り込む
@@ -103,9 +105,20 @@ class PetController extends Controller
             //文字列を半角スペースで区切り、配列として$keywordsに代入する
             $keywords = preg_split("/[\s,]+/", $search_breed, 0, PREG_SPLIT_NO_EMPTY);
             
-            //すべての検索ワードがbreedと部分一致するレコードを検索
-            foreach($keywords as $keyword){
-                $query->where('breed', 'like', "%$keyword%");
+            if ($search_method == 'and') {
+                
+                //すべての検索ワードがbreedと部分一致するレコードを検索
+                foreach ($keywords as $keyword){
+                    $query->where('breed', 'like', "%$keyword%");
+                }
+            }else{
+                
+                //いずれかの検索ワードがbreedと部分一致するレコードを検索
+                $query->where(function($query) use($keywords) {
+                    foreach ($keywords as $keyword){
+                        $query->orwhere('breed', 'like', "%$keyword%");
+                    }
+                });
             }
         }
         

@@ -52,6 +52,14 @@
                     
                     <dt class="col-12 col-sm-12 col-md-2">品種名</dt>
                     <dd class="col-12 col-sm-12 col-md-10">
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="method" id="method_and" checked value="and">
+                            <label for="method_and" class="form-check-label">AND検索</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="method" id="method_or" value="or">
+                            <label for="method_or" class="form-check-label">OR検索</label>
+                        </div>
                         <input type="text" class="form-control" name="breed" value="">
                     </dd>
                     
@@ -126,7 +134,7 @@
                 @endforeach
             </div>
             
-            <div class='paginate'>
+            <div>
                 {{ $pets->links() }}
             </div>
         </div>
