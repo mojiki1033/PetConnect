@@ -45,7 +45,7 @@
                 <dd class="col-12 col-sm-12 col-md-9">{!! nl2br(e($pet->detail)) !!}</dd>
             </dl>
             
-            @if ($pet->status_id !== 3)
+            @if ($pet->status_id != 3)
                 @if ($pet->user->id == Auth::id())
                     <div class="d-grid mb-5 col-6 mx-auto">
                         <button type="button" class="btn btn-success" onclick="location.href='/pets/{{ $pet->id }}/edit'">投稿の編集</button>
@@ -83,14 +83,14 @@
                     <hr>
                 @endforeach
                 
-                @if ($pet->status_id !== 3)
+                @if ($pet->status_id != 3)
                     @if (Auth::check())
                         <form action="/pets/{{$pet->id}}/comment" method="POST">
                             @csrf
                             <textarea class="form-control" rows="10" name="content">{{ old('content') }}</textarea>
                             <p style="color:red">{{ $errors->first('content') }}</p>
                             <div class="d-grid col-6 mx-auto">
-                                <input class="btn btn-primary " type="submit" value="コメントを送信">
+                                <input class="btn btn-primary" type="submit" value="コメントを送信">
                             </div>
                         </form>
                     @else
